@@ -1,0 +1,11 @@
+{
+  "common": {
+    "login": "Login",
+    "reset": "Reset",
+    "clear": "Clear"
+  },
+  "login": {
+    "userName": "User Name",
+    "password": "Password"
+  }
+}
