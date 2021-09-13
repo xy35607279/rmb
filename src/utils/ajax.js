@@ -3,11 +3,20 @@ import { showLoading, hideLoading } from './loading';
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 const service = axios.create({
+  baseURL: '/optg',
   headers: {},
   isShowLoading: true
 });
 service.interceptors.request.use(
   (config) => {
+    if (config.url === '/gateway') {
+      config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+    } else {
+      config.headers['Content-Type'] = 'application/json; charset=utf-8';
+    }
+
+    console.log(config);
+
     if (config.isShowLoading) {
       showLoading();
     }
@@ -18,7 +27,7 @@ service.interceptors.request.use(
       hideLoading();
     }
     return 'error';
-  }
+  },
 );
 
 service.interceptors.response.use(
@@ -35,7 +44,7 @@ service.interceptors.response.use(
   ({ config }) => {
     if (config.isShowLoading) hideLoading();
     return 'error';
-  }
+  },
 );
 
 export default service;

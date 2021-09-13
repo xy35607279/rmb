@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <div class="logo" @click="$router.push('/home')" />
+    <div
+      class="logo"
+      @click="$router.push('/home')"
+    />
     <ul class="channel">
       <li
         v-for="item in channelList"
@@ -30,28 +33,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      channelList: [
-        // {
-        //   i1n8nCode: 'menu.channel.internationalSettlement',
-        //   path: '/settlement'
-        // },
-        // {
-        //   i1n8nCode: 'menu.channel.supplyChainFinancial',
-        //   path: '/supplyChainFinancial'
-        // },
-        // {
-        //   i1n8nCode: 'menu.channel.internationalPay',
-        //   path: '/internationalPay'
-        // },
-        // {
-        //   i1n8nCode: 'menu.channel.globalCash',
-        //   path: '/globalCash'
-        // },
-        // {
-        //   i1n8nCode: 'menu.channel.commonManagement',
-        //   path: '/commonManagement'
-        // }
-      ]
+      channelList: []
     };
   },
   mounted() {

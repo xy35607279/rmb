@@ -3,6 +3,7 @@ import { ROUTE_CONFIG_TYPE } from '@/config/constants';
 import internationalSettlement from './config/internationalSettlement';
 import home from './config/home';
 import login from './config/login';
+import test from './config/test';
 
 const {
   MENU,
@@ -14,6 +15,7 @@ let $id = 0;
 
 const originalConfig = [
   ...(_.isArray(login) ? login : [login]),
+  ...(_.isArray(test) ? test : [test]),
   ...(_.isArray(home) ? home : [home]),
   ...(_.isArray(internationalSettlement) ? internationalSettlement : [internationalSettlement])
 ];
@@ -68,8 +70,7 @@ const processConfig = (config, parentRoute, parentMenu, channelId) => {
   if (config.children && config.children.length) { // 如果配置了子路由
     config.children.forEach((child) => {
       // 计算每一个子路由的路由信息和菜单信息
-      const { route: subRoute, menuInfo: subMenuInfo } =
-        processConfig(child, tempRoute, menuInfo || parentMenu, rootMenuId);
+      const { route: subRoute, menuInfo: subMenuInfo } = processConfig(child, tempRoute, menuInfo || parentMenu, rootMenuId);
 
       // 如果子菜单信息存在，就放入当前菜单的children中
       if (subMenuInfo) {

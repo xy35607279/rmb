@@ -2,10 +2,15 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import './assets/style/index.scss';
+import Vant from 'vant';
 import App from './App.vue';
 import router, { setupBeforeEachInterceptor } from './router';
 import store from './store';
 import i18n from './locales';
+
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
 
 Vue.use(VueRouter);
 Vue.use(ElementUI);
@@ -20,7 +25,6 @@ new Vue({
   i18n,
   render: h => h(App)
 }).$mount('#app');
-
 
 /*
   先从入口文件开始分析
@@ -47,8 +51,6 @@ new Vue({
         i18n,
         render: h => h(App)
       }).$mount('#app');
-  
-  
-  
+
   路由需要详细看
 */

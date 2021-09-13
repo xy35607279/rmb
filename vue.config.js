@@ -26,6 +26,24 @@ module.exports = {
     // Tells dev-server to open the browser after server had been started.
     open: true,
     port: 8080,
+    proxy: {
+      '/optg': {
+        target: 'https://test.17ebank.com:9099/mobilegw',
+        logLevel: 'debug',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/optg': ''
+        }
+      },
+      '/sign': {
+        target: 'http://132.232.51.21:8080/safe',
+        logLevel: 'debug',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/sign': ''
+        }
+      }
+    },
     // Shows a full-screen overlay in the browser when there are compiler errors, compiler warnings don't show overlay.
     overlay: {
       warnings: false,
